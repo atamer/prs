@@ -5,8 +5,6 @@ import com.imc.prs.driver.io.file.IOChannelFile;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
@@ -19,27 +17,23 @@ public class IOChannelFactory {
 
 
     public static IOChannel createIOChannel(char connection) {
-        if(connection == CONNECTION_TYPE_FILE){
+        if (connection == CONNECTION_TYPE_FILE) {
             return createIOChannelFile();
-        }else if(connection == CONNECTION_TYPE_CONSOLE){
+        } else if (connection == CONNECTION_TYPE_CONSOLE) {
             return createIOChannelConsole();
-        }else{
-            throw new IllegalArgumentException("Connection type "+ connection + " undefined");
+        } else {
+            throw new IllegalArgumentException("Connection type " + connection + " undefined");
         }
 
     }
+
     public static IOChannel createIOChannelConsole() {
         return IOChannelConsole.newInstance(new BufferedWriter(new OutputStreamWriter(System.out)),
                 new BufferedReader(new InputStreamReader(System.in)));
     }
 
     public static IOChannel createIOChannelFile() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(OUTPUT_FILE, true));
-             BufferedReader br = new BufferedReader(new FileReader(INPUT_FILE))) {
-            return IOChannelFile.newInstance(OUTPUT_FILE, INPUT_FILE);
-        } catch (Exception exception) {
-            throw new IOChannelException(exception.getMessage());
-        }
+        return IOChannelFile.newInstance(OUTPUT_FILE, INPUT_FILE);
 
     }
 }

@@ -31,18 +31,18 @@ public class DriverImpl implements IDriver {
         game.startLoop();
     }
 
-    private List<IPlayer> createPlayers(int playerCount, char comm) {
+    List<IPlayer> createPlayers(int playerCount, char comm) {
         List<IPlayer> playerList = new ArrayList<>();
         for (int i = 0; i < playerCount; i++) {
             playerList.add(PlayerFactory.newPlayer(IOChannelFactory.createIOChannel(comm), "Player" + i));
         }
         if (playerList.size() == 1) {
-            playerList.add(PlayerFactory.mockPlayer());
+            playerList.add(PlayerFactory.computerPlayer());
         }
         return playerList;
     }
 
-    public void introduceGame(List<IPlayer> playerList) {
+    void introduceGame(List<IPlayer> playerList) {
         for (IPlayer player : playerList) {
             player.sendMessage("For each hand you need to select one of P-R-S (Paper-Rock-Scissors)\n");
             player.sendMessage("Rules");

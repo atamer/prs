@@ -31,28 +31,30 @@ class GameTest {
     }
 
     @Test
-    void runLoop_inputPAndQuit_callNotifyResult() {
-        this.validInput_callNotifyResult('P');
+    void runLoop_inputPPAndQuit_callNotifyResult() {
+        this.validInput_callNotifyResult('P', 'P', "you draw with player");
     }
 
     @Test
-    void runLoop_inputRAndQuit_callNotifyResult() {
-        this.validInput_callNotifyResult('R');
+    void runLoop_inputRSAndQuit_callNotifyResult() {
+        this.validInput_callNotifyResult('R', 'S', "you beat player");
     }
 
     @Test
-    void runLoop_inputSAndQuit_callNotifyResult() {
-        this.validInput_callNotifyResult('S');
+    void runLoop_inputPSAndQuit_callNotifyResult() {
+        this.validInput_callNotifyResult('P', 'S', "you lost against player");
     }
 
-    void validInput_callNotifyResult(char character) {
+
+
+    void validInput_callNotifyResult(char character1, char character2, String message) {
         //setting up mock
-        when(player1.readHand()).thenReturn(Hands.get(character)).thenReturn(Hands.QUIT);
-        when(player2.readHand()).thenReturn(Hands.get(character)).thenReturn(Hands.QUIT);
+        when(player1.readHand()).thenReturn(Hands.get(character1)).thenReturn(Hands.QUIT);
+        when(player2.readHand()).thenReturn(Hands.get(character2)).thenReturn(Hands.QUIT);
         //call
         game.startLoop();
         //verify
-        verify(player1).sendMessage(Mockito.startsWith("you draw with player"));
+        verify(player1).sendMessage(Mockito.startsWith(message));
     }
 
 }

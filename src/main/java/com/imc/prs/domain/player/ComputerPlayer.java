@@ -4,7 +4,7 @@ import com.imc.prs.domain.hands.Hands;
 
 import java.util.Random;
 
-public class MockPlayer implements IPlayer {
+public class ComputerPlayer implements IPlayer {
 
     private final Random random = new Random();
 

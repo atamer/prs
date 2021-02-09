@@ -1,4 +1,5 @@
 This project is implementation of Rock paper scissors game
+
 Taking Inputs from console/file and writes to console/file
 
 Here is the Domain Model
@@ -14,6 +15,7 @@ Player -> Player with connection
 Hands -> Symbols
 
 HandComparingStrategy -> Extensible Strategy Methods
+
 
 
 In order to run project

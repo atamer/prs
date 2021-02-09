@@ -16,6 +16,7 @@ public class Game {
 
     private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 
+
     private final HandComparingStrategy comparingStrategy;
     private final List<IPlayer> playerList;
 
