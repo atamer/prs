@@ -7,7 +7,7 @@ public class Player implements IPlayer {
     private final IOChannel channel;
     private final String name;
 
-    public Player(IOChannel ioChannel, String name) {
+    Player(IOChannel ioChannel, String name) {
         this.channel = ioChannel;
         this.name = name;
     }

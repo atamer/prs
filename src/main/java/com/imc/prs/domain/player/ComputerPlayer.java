@@ -8,6 +8,10 @@ public class ComputerPlayer implements IPlayer {
 
     private final Random random = new Random();
 
+    ComputerPlayer(){
+        //hidden constructor
+    }
+
     @Override
     public Hands readHand() {
         return Hands.values()[random.nextInt(Hands.values().length - 1)];
