@@ -2,7 +2,7 @@ This project is implementation of Rock paper scissors game
 
 Taking Inputs from console/file and writes to console/file
 
-Here is the Domain Model
+Domain Objects
 
 Game -> Game logic
 
